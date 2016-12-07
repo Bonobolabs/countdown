@@ -53,8 +53,9 @@
     	</script>
 	</head>
 	<body>
-		
-		<!-- Nothing to change here -->
+		<div id="wrapper" style="text-align: center">    
+    		<div id="titleLabel" style="display: inline-block;"></div>
+		</div>
 		<div class="ce-countdown ce-countdown--theme-3" id="countdown">
 			<div class="ce-col"><span class="ce-days"></span> <span class="ce-days-label"></span></div>
 			<div class="ce-col"><span class="ce-hours"></span> <span class="ce-hours-label"></span></div>
@@ -69,19 +70,28 @@
 		<!-- Init Count Everest plugin -->
 		<script>
 			var queryParams = getUrlVars();
+			
+			var timezoneOffset = queryParams["timezoneOffset"];
+			if (!timezoneOffset) timezoneOffset = 0; // UTC if nothing specified.
+			
 			$(document).ready(function() {
 				$('.ce-countdown').countEverest({
 					//Set your target date here!
 					day: queryParams["day"],
 					month: queryParams["month"],
-					year: queryParams["year"]
+					year: queryParams["year"],
+					hour: queryParams["hour"],
+					minute: queryParams["minute"],
+					second: queryParams["second"],
+					timeZone: timezoneOffset
 				});
 			});
 			
 			var backgroundColor = queryParams["color"];
 			if (!backgroundColor) backgroundColor = "#000";
 			document.body.style.background = backgroundColor;
-			document.getElementById('countdown').backgroundColor = backgroundColor;
+			
+			document.getElementById('titleLabel').innerHTML = decodeURIComponent(queryParams["title"]);
 		</script>
 	</body>
 </html>
