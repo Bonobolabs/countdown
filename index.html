@@ -4,9 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<!-- Don't forget to change the title! -->
-		<title>Theme 3 - Count Everest jQuery Plugin</title>
+		
+		<title>Timepage Countdown</title>
 		
 		<!-- Load Google Fonts -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300">
@@ -91,7 +90,10 @@
 			if (!backgroundColor) backgroundColor = "#000";
 			document.body.style.background = backgroundColor;
 			
-			document.getElementById('titleLabel').innerHTML = decodeURIComponent(queryParams["title"]);
+			var title = decodeURIComponent(queryParams["title"]);
+			document.getElementById('titleLabel').innerHTML = title;
+			
+			document.title = title + " via Timepage";
 		</script>
 	</body>
 </html>
