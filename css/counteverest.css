@@ -1,3 +1,69 @@
+/* Timepage Theme ----------------------------------------------------------------- */
+
+.tp-countdown-event-title {
+	font-family: 'Avenir Next', sans-serif;
+	font-size: 60px;
+	font-weight: normal;
+	text-align: center;
+	display: block;
+}
+
+.tp-countdown-in {
+	font-family: 'Avenir Next', sans-serif;
+	font-size: 40px;
+	font-weight: normal;
+	text-align: center;
+	display: block;
+}
+
+.timepage-theme {
+	font-family: 'Avenir Next', sans-serif;
+	font-size: 60px;
+	min-height: 90px;
+	padding: 30px;
+	text-align: center;
+	text-transform: lowercase;
+}
+
+.tp-countdown-top-line {
+	font-size: 200px;
+	display: block;
+}
+
+.tp-countdown-bottom-line {
+	font-size: 50px;
+}
+
+.timepage-theme .ce-days,
+.timepage-theme .ce-hours,
+.timepage-theme .ce-minutes,
+.timepage-theme .ce-seconds {
+	font-weight: 600;
+}
+
+.timepage-theme .ce-days-label,
+.timepage-theme .ce-hours-label,
+.timepage-theme .ce-minutes-label,
+.timepage-theme .ce-seconds-label {
+	font-weight: lighter;
+	text-transform: uppercase;
+}
+
+@media all and (max-width: 730px) {
+	.ce-countdown--theme-tp, 
+	.tp-countdown-event-title {
+		font-size: 30px;
+	}
+	
+	.tp-countdown-top-line {
+		font-size: 60px;
+	} 
+	
+	.tp-countdown-bottom-line {
+		font-size: 15px
+	}
+}
+
 /* Theme 1 ----------------------------------------------------------------- */
 
 .ce-countdown--theme-1 {

@@ -7,9 +7,6 @@
 		
 		<title>Timepage Countdown</title>
 		
-		<!-- Load Google Fonts -->
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:100,300">
-		
 		<!-- Load stylesheet -->
 		<link rel="stylesheet" href="css/counteverest.css">
 
@@ -22,7 +19,7 @@
 			}
 
 			body {
-				background: #000;
+				color: #fff;
 				display: table-cell;
 				margin: 0;
 				padding: 0;
@@ -31,7 +28,6 @@
 
 			.ce-countdown {
 				margin: 0 auto;
-				max-width: 1024px;
 				text-align: center;
 			}
 		</style>
@@ -52,14 +48,19 @@
     	</script>
 	</head>
 	<body>
-		<div id="wrapper" style="text-align: center">    
-    		<div id="titleLabel" style="display: inline-block;"></div>
+		<div id="wrapper">    
+    		<div class="tp-countdown-event-title" id="titleLabel"></div>
+			<div class="tp-countdown-in">IN</div>
 		</div>
-		<div class="ce-countdown ce-countdown--theme-3" id="countdown">
-			<div class="ce-col"><span class="ce-days"></span> <span class="ce-days-label"></span></div>
-			<div class="ce-col"><span class="ce-hours"></span> <span class="ce-hours-label"></span></div>
-			<div class="ce-col"><span class="ce-minutes"></span> <span class="ce-minutes-label"></span></div>
-			<div class="ce-col"><span class="ce-seconds"></span> <span class="ce-seconds-label"></span></div>
+		<div class="ce-countdown timepage-theme" id="countdown">
+			<span class="tp-countdown-top-line">
+				<span class="ce-days"></span> <span class="ce-days-label"></span>
+			</span>
+			<span class="tp-countdown-bottom-line">
+				<span class="ce-hours"></span> <span class="ce-hours-label"></span>
+				<span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
+				<span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+			</span>
 		</div>
 
 		<!-- Load all necessary JavaScript files -->
@@ -87,7 +88,7 @@
 			});
 			
 			var backgroundColor = queryParams["color"];
-			if (!backgroundColor) backgroundColor = "#000";
+			if (!backgroundColor) backgroundColor = "#214A54";
 			document.body.style.background = backgroundColor;
 			
 			var title = decodeURIComponent(queryParams["title"]);
