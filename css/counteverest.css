@@ -1,7 +1,6 @@
 /* Timepage Theme ----------------------------------------------------------------- */
 
 .tp-countdown-event-title {
-	font-family: 'Avenir Next', sans-serif;
 	font-size: 60px;
 	font-weight: normal;
 	text-align: center;
@@ -9,7 +8,7 @@
 }
 
 .tp-countdown-in {
-	font-family: 'Avenir Next', sans-serif;
+	padding-top: 30px;
 	font-size: 40px;
 	font-weight: normal;
 	text-align: center;
@@ -17,12 +16,19 @@
 }
 
 .timepage-theme {
-	font-family: 'Avenir Next', sans-serif;
 	font-size: 60px;
 	min-height: 90px;
 	padding: 30px;
 	text-align: center;
 	text-transform: lowercase;
+}
+
+/* TODO: Font for Non-Mac/iOS viewers without Avenir Next */
+.timepage-theme,
+.tp-countdown-in,
+.tp-countdown-event-title,
+.footer {
+	font-family: 'Avenir Next', sans-serif;
 }
 
 .tp-countdown-top-line {
@@ -49,6 +55,21 @@
 	text-transform: uppercase;
 }
 
+.timepage-logo {
+	text-align: center;
+	display: block;
+}
+
+.footer {
+	position: absolute;
+	font-size: smaller;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+}
+
 @media all and (max-width: 730px) {
 	.ce-countdown--theme-tp, 
 	.tp-countdown-event-title {
@@ -59,7 +80,8 @@
 		font-size: 60px;
 	} 
 	
-	.tp-countdown-bottom-line {
+	.tp-countdown-bottom-line,
+	.tp-countdown-in {
 		font-size: 15px
 	}
 }
