@@ -53,13 +53,13 @@
 			<div class="tp-countdown-in">IN</div>
 		</div>
 		<div class="ce-countdown timepage-theme" id="countdown">
-			<span class="tp-countdown-top-line">
-				<span class="ce-days"></span> <span class="ce-days-label"></span>
+			<span id="toplineWrapper" class="tp-countdown-top-line">
+				<span id="daysWrapper"><span class="ce-days"></span> <span class="ce-days-label"></span></span>
 			</span>
-			<span class="tp-countdown-bottom-line">
-				<span class="ce-hours"></span> <span class="ce-hours-label"></span>
-				<span class="ce-minutes"></span> <span class="ce-minutes-label"></span>
-				<span class="ce-seconds"></span> <span class="ce-seconds-label"></span>
+			<span id="bottomlineWrapper" class="tp-countdown-bottom-line">
+				<span id="hoursWrapper"><span class="ce-hours"></span> <span class="ce-hours-label"></span></span>
+				<span id="minutesWrapper"><span class="ce-minutes"></span> <span class="ce-minutes-label"></span></span>
+				<span id="secondsWrapper"><span class="ce-seconds"></span> <span class="ce-seconds-label"></span></span>
 			</span>
 		</div>
 		<div class="timepage-logo">
@@ -84,14 +84,38 @@
 			
 			$(document).ready(function() {
 				$('.ce-countdown').countEverest({
-					//Set your target date here!
+					// Set your target date here!
 					day: queryParams["day"],
 					month: queryParams["month"],
 					year: queryParams["year"],
 					hour: queryParams["hour"],
 					minute: queryParams["minute"],
 					second: queryParams["second"],
-					timeZone: timezoneOffset
+					timeZone: timezoneOffset,
+					afterCalculation: function() {
+							if (this.days > 0) {
+								//console.log("Days" + this.days);
+								$('#daysWrapper').appendTo('#toplineWrapper');
+							} else {
+								$('#daysWrapper').detach();
+								
+								if (this.hours > 0) {
+									//console.log("Hours" + this.hours);
+									$('#hoursWrapper').appendTo('#toplineWrapper');
+								} else {
+									$('#hoursWrapper').detach();
+									
+									if (this.minutes > 0) {
+										//console.log("Minutes" + this.minutes);
+										$('#minutesWrapper').appendTo('#toplineWrapper');
+									} else {
+										//console.log("Seconds" + this.seconds);
+										$('#minutesWrapper').detach();
+										$('#secondsWrapper').appendTo('#toplineWrapper');
+									}
+								}
+							}
+						}
 				});
 			});
 			
