@@ -64,6 +64,15 @@
 	display: block;
 }
 
+.tp-countdown-icon {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+	text-align: center;
+	display: block;
+	padding-bottom: 30px;
+}
+
 .footer {
 	position: absolute;
 	font-size: smaller;

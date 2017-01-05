@@ -48,7 +48,8 @@
     	</script>
 	</head>
 	<body>
-		<div id="wrapper">    
+		<div id="iconWrapper"><img class="tp-countdown-icon" id="icon" src=""></div>
+		<div>    
     		<div class="tp-countdown-event-title" id="titleLabel"></div>
 			<div class="tp-countdown-in" id="inLabel">IN</div>
 		</div>
@@ -124,6 +125,14 @@
 			var backgroundColor = queryParams["color"];
 			if (!backgroundColor) backgroundColor = "#214A54";
 			document.body.style.background = backgroundColor;
+			
+			var icon = queryParams["icon"];
+			if (icon) {
+				var iconName = "./images/" + decodeURIComponent(icon) + ".png";
+  				$('#icon').attr('src', iconName);
+			} else {
+				$('#iconWrapper').detach();
+			}
 			
 			var title = queryParams["title"];
 			if (title) {
