@@ -50,7 +50,7 @@
 	<body>
 		<div id="wrapper">    
     		<div class="tp-countdown-event-title" id="titleLabel"></div>
-			<div class="tp-countdown-in">IN</div>
+			<div class="tp-countdown-in" id="inLabel">IN</div>
 		</div>
 		<div class="ce-countdown timepage-theme" id="countdown">
 			<span id="toplineWrapper" class="tp-countdown-top-line">
@@ -123,8 +123,9 @@
 			if (!backgroundColor) backgroundColor = "#214A54";
 			document.body.style.background = backgroundColor;
 			
-			var title = decodeURIComponent(queryParams["title"]);
-			document.getElementById('titleLabel').innerHTML = title;
+			var title = queryParams["title"];
+			if (title) document.getElementById('titleLabel').innerHTML = decodeURIComponent(title);
+			else document.getElementById('inLabel').innerHTML = "";
 			
 			document.title = title + " via Timepage";
 		</script>
