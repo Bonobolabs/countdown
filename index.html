@@ -126,10 +126,14 @@
 			document.body.style.background = backgroundColor;
 			
 			var title = queryParams["title"];
-			if (title) document.getElementById('titleLabel').innerHTML = decodeURIComponent(title);
-			else document.getElementById('inLabel').innerHTML = "";
-			
-			document.title = title + " via Timepage";
+			if (title) {
+				var decodedTitle = decodeURIComponent(title);
+				document.getElementById('titleLabel').innerHTML = decodedTitle;
+				document.title = decodedTitle + " via Timepage";
+			} else {
+				document.getElementById('inLabel').innerHTML = "";
+				document.title = "Timepage Countdown";
+			}
 		</script>
 	</body>
 </html>
