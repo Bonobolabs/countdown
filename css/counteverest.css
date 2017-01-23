@@ -1,17 +1,16 @@
 /* Timepage Theme ----------------------------------------------------------------- */
 
 .tp-countdown-event-title {
-	font-size: 60px;
-	font-size: 5vh;
+	line-height: 0.9;
+	font-size: 5vmin;
 	font-weight: 200;
 	text-align: center;
 	display: block;
 }
 
 .tp-countdown-in {
-	padding-top: 30px;
-	font-size: 40px;
-	font-size: 1.25vw;
+	padding-top: 2%;
+	font-size: 2vmin;
 	font-weight: normal;
 	text-align: center;
 	display: block;
@@ -31,14 +30,17 @@
 }
 
 .tp-countdown-top-line {
-	font-size: 200px;
-	font-size: 15vw;
+	padding-top: 2%;
+	line-height: 0.9;
+	font-size: 11vmin;
 	display: block;
 }
 
 .tp-countdown-bottom-line {
-	/*font-size: 50px;*/
-	font-size: 3.25vw;
+	line-height: 0.9;
+	font-size: 2.4vmin;
+	display: block;
+	padding-bottom: 2%;
 }
 
 .timepage-theme .ce-days,
@@ -62,7 +64,7 @@
 }
 
 .tp-countdown-icon {
-	width: 25%;
+	width: 20%;
 	margin: auto;
 	text-align: center;
 	display: block;
@@ -87,6 +89,7 @@
 	flex-grow: 1;
 }
 
+/*
 @media all and (max-width: 730px) {
 	.ce-countdown--theme-tp, 
 	.tp-countdown-event-title {
@@ -107,6 +110,7 @@
 		font-size: 15px;
 	}
 }
+*/
 
 /* Theme 1 ----------------------------------------------------------------- */
 
