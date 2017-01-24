@@ -42,7 +42,6 @@
 	padding-bottom: 1vmin;
 	line-height: 0.9;
 	font-size: 9vmin;
-    font-weight: bolder;
 	display: block;
 	color: #e6543e;
 }
@@ -57,14 +56,14 @@
 .timepage-theme .ce-hours,
 .timepage-theme .ce-minutes,
 .timepage-theme .ce-seconds {
-	font-weight: 300;
+	font-weight: 600;
 }
 
 .timepage-theme .ce-days-label,
 .timepage-theme .ce-hours-label,
 .timepage-theme .ce-minutes-label,
 .timepage-theme .ce-seconds-label {
-	font-weight: lighter;
+	font-weight: 200;
 	text-transform: uppercase;
 }
 
