@@ -17,7 +17,7 @@
 }
 
 #tp-countdown-in {
-	padding-top: 2%;
+	padding-top: 2vmin;
 	font-size: 2vmin;
 	font-weight: lighter;
 	text-align: center;
@@ -38,7 +38,7 @@
 }
 
 #tp-countdown-top-line {
-	padding-top: 2%;
+	padding-top: 4vmin;
 	line-height: 0.9;
 	font-size: 9vmin;
 	display: block;
@@ -49,7 +49,6 @@
 	line-height: 0.9;
 	font-size: 2vmin;
 	display: block;
-	padding-bottom: 5%;
 }
 
 .timepage-theme .ce-days,
@@ -71,7 +70,7 @@
 	width: 20vmin;
 	margin: auto;
 	display: block;
-	max-width: 150px;
+	max-width: 180px;
 	min-width: 90px;
 }
 
@@ -102,10 +101,12 @@
 #main {
 	height: auto;
 	background: #1d2424;
+	padding-top: 2vmin;
+	padding-bottom: 5vmin;
 }
 
 #footer {
-	padding-top: 3%;
+	padding-top: 3vmin;
 	text-align: center;
 	display: block;
 	height: auto;
