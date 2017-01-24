@@ -1,6 +1,15 @@
 /* Timepage Theme ----------------------------------------------------------------- */
 
-.tp-countdown-event-title {
+
+#tp-countdown-icon {
+	padding-top: 4%;
+	width: 20%;
+	margin: auto;
+	text-align: center;
+	display: block;
+}
+
+#tp-countdown-event-title {
 	line-height: 0.9;
 	font-size: 5.4vmin;
 	font-weight: 200;
@@ -8,7 +17,7 @@
 	display: block;
 }
 
-.tp-countdown-in {
+#tp-countdown-in {
 	padding-top: 2%;
 	font-size: 2vmin;
 	font-weight: lighter;
@@ -23,25 +32,25 @@
 
 /* TODO: Font for Non-Mac/iOS viewers without Avenir Next */
 .timepage-theme,
-.tp-countdown-in,
-.tp-countdown-event-title,
-.footer,
+#tp-countdown-in,
+#tp-countdown-event-title,
 #tp-download-text {
 	font-family: 'Avenir Next', sans-serif;
 }
 
-.tp-countdown-top-line {
+#tp-countdown-top-line {
 	padding-top: 2%;
 	line-height: 0.9;
 	font-size: 9vmin;
 	display: block;
+	color: #e6543e;
 }
 
-.tp-countdown-bottom-line {
+#tp-countdown-bottom-line {
 	line-height: 0.9;
 	font-size: 2vmin;
 	display: block;
-	padding-bottom: 8%;
+	padding-bottom: 5%;
 }
 
 .timepage-theme .ce-days,
@@ -65,35 +74,34 @@
 	display: block;
 }
 
-#tp-download-text {
-	font-weight: lighter;
+#app-store-button {
+	width: 12%;
 	margin: auto;
 	display: block;
 }
 
-#tp-countdown-icon {
-	padding-top: 4%;
-	width: 25%;
+#tp-download-text {
+	font-weight: lighter;
 	margin: auto;
-	text-align: center;
 	display: block;
+	padding: 2%;
 }
 
 #full {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	background: #1d2424;
 }
 
 #main {
-/*	height: 60%;*/
 	height: auto;
-	background: #f6432e;
+	background: #1d2424;
 }
 
 #footer {
 /*	height: 40%;*/
-	padding-top: 8%;
+	padding-top: 3%;
 	text-align: center;
 	display: block;
 	height: auto;
@@ -110,11 +118,11 @@
 		font-size: 8vmin;
 	}
 	
-	.tp-countdown-top-line {
+	#tp-countdown-top-line {
 		font-size: 15vmin;
 	}
 
-	.tp-countdown-bottom-line {
+	#tp-countdown-bottom-line {
 		font-size: 3.3vmin;
 	}
 }

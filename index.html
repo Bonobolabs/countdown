@@ -52,14 +52,14 @@
 			<div id="main">
 				<div id="iconWrapper"><img id="tp-countdown-icon" src=""></div>
 				<div>    
-					<div class="tp-countdown-event-title" id="titleLabel"></div>
-					<div class="tp-countdown-in" id="inLabel">IN</div>
+					<div id="tp-countdown-event-title"></div>
+					<div id="tp-countdown-in">IN</div>
 				</div>
 				<div class="ce-countdown timepage-theme" id="countdown">
-					<span id="toplineWrapper" class="tp-countdown-top-line">
+					<span id="tp-countdown-top-line">
 						<span id="daysWrapper"><span class="ce-days"></span> <span class="ce-days-label"></span></span>
 					</span>
-					<span id="bottomlineWrapper" class="tp-countdown-bottom-line">
+					<span id="tp-countdown-bottom-line">
 						<span id="hoursWrapper"><span class="ce-hours"></span> <span class="ce-hours-label"></span></span>
 						<span id="minutesWrapper"><span class="ce-minutes"></span> <span class="ce-minutes-label"></span></span>
 						<span id="secondsWrapper"><span class="ce-seconds"></span> <span class="ce-seconds-label"></span></span>
@@ -67,10 +67,10 @@
 				</div>
 			</div>
 			<div id="footer">
-				<img id="tp-app-icon" src="http://www.moleskine.com/documents/1388103/1412555/iconTitle.png?t=1432805061301">
+				<img id="tp-app-icon" src="images/timepage.png">
 				<span id="tp-download-text">Download Timepage to create a countdown on your iPhone or iPad.</span>
 				<a href="https://itunes.apple.com/us/app/timepage-calendar-by-moleskine/id989178902?mt=8&at=1010ldAj&ct=countdown">
-					<img id="app-store-button" src="http://www.moleskine.com/documents/1388103/1405199/download_apple_store.png?t=1429082829762">
+					<img id="app-store-button" src="images/appstore.png">
 				</a>
 			</div>
 		</div>
@@ -99,23 +99,23 @@
 					afterCalculation: function() {
 							if (this.days > 0) {
 								//console.log("Days" + this.days);
-								$('#daysWrapper').appendTo('#toplineWrapper');
+								$('#daysWrapper').appendTo('#tp-countdown-top-line');
 							} else {
 								$('#daysWrapper').detach();
 								
 								if (this.hours > 0) {
 									//console.log("Hours" + this.hours);
-									$('#hoursWrapper').appendTo('#toplineWrapper');
+									$('#hoursWrapper').appendTo('#tp-countdown-top-line');
 								} else {
 									$('#hoursWrapper').detach();
 									
 									if (this.minutes > 0) {
 										//console.log("Minutes" + this.minutes);
-										$('#minutesWrapper').appendTo('#toplineWrapper');
+										$('#minutesWrapper').appendTo('#tp-countdown-top-line');
 									} else {
 										//console.log("Seconds" + this.seconds);
 										$('#minutesWrapper').detach();
-										$('#secondsWrapper').appendTo('#toplineWrapper');
+										$('#secondsWrapper').appendTo('#tp-countdown-top-line');
 									}
 								}
 							}
@@ -138,10 +138,10 @@
 			var title = queryParams["title"];
 			if (title) {
 				var decodedTitle = decodeURIComponent(title);
-				document.getElementById('titleLabel').innerHTML = decodedTitle;
+				document.getElementById('tp-countdown-event-title').innerHTML = decodedTitle;
 				document.title = decodedTitle + " via Timepage";
 			} else {
-				document.getElementById('inLabel').innerHTML = "";
+				document.getElementById('tp-countdown-in').innerHTML = "";
 				document.title = "Timepage Countdown";
 			}
 		</script>
