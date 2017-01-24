@@ -50,7 +50,7 @@
 	<body>
 		<div id="full">
 			<div id="main">
-				<div id="iconWrapper"><img id="tp-countdown-icon" src=""></div>
+				<img id="tp-countdown-icon" src="">
 				<div>    
 					<div id="tp-countdown-event-title"></div>
 					<div id="tp-countdown-in">IN</div>
@@ -97,29 +97,29 @@
 					second: queryParams["second"],
 					timeZone: timezoneOffset,
 					afterCalculation: function() {
-							if (this.days > 0) {
-								//console.log("Days" + this.days);
-								$('#daysWrapper').appendTo('#tp-countdown-top-line');
+						if (this.days > 0) {
+							//console.log("Days" + this.days);
+							$('#daysWrapper').appendTo('#tp-countdown-top-line');
+						} else {
+							$('#daysWrapper').detach();
+
+							if (this.hours > 0) {
+								//console.log("Hours" + this.hours);
+								$('#hoursWrapper').appendTo('#tp-countdown-top-line');
 							} else {
-								$('#daysWrapper').detach();
-								
-								if (this.hours > 0) {
-									//console.log("Hours" + this.hours);
-									$('#hoursWrapper').appendTo('#tp-countdown-top-line');
+								$('#hoursWrapper').detach();
+
+								if (this.minutes > 0) {
+									//console.log("Minutes" + this.minutes);
+									$('#minutesWrapper').appendTo('#tp-countdown-top-line');
 								} else {
-									$('#hoursWrapper').detach();
-									
-									if (this.minutes > 0) {
-										//console.log("Minutes" + this.minutes);
-										$('#minutesWrapper').appendTo('#tp-countdown-top-line');
-									} else {
-										//console.log("Seconds" + this.seconds);
-										$('#minutesWrapper').detach();
-										$('#secondsWrapper').appendTo('#tp-countdown-top-line');
-									}
+									//console.log("Seconds" + this.seconds);
+									$('#minutesWrapper').detach();
+									$('#secondsWrapper').appendTo('#tp-countdown-top-line');
 								}
 							}
 						}
+					}
 				});
 			});
 			
@@ -132,7 +132,7 @@
 				var iconName = "./images/" + decodeURIComponent(icon) + ".png";
   				$('#tp-countdown-icon').attr('src', iconName);
 			} else {
-				$('#iconWrapper').detach();
+				$('#tp-countdown-icon').detach();
 			}
 			
 			var title = queryParams["title"];
