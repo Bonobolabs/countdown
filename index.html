@@ -103,6 +103,84 @@
 			var timezoneOffset = queryParams["timezoneOffset"];
 			if (!timezoneOffset) timezoneOffset = 0; // UTC if nothing specified.
 			
+			var locale = queryParams["lc"] || "en";
+			
+			var Localization = {
+			  translate: function(lcKey, value) {
+				var loc = this.locales[this.currentLocale];
+				var translation = loc[lcKey];
+				return translation[loc.plural(value)];
+			  },
+
+			  currentLocale: locale,
+
+			  locales: {
+				en: {
+				  D: [" DAY", " DAYS"],
+				  H: [" HOUR", " HOURS"],
+				  M: [" MINUTE", " MINUTES"],
+			      S: [" SECOND", " SECONDS"],
+				  plural: function(nr) {
+          			return (nr == 1) ? 0 : 1;
+        		  }
+				},
+				fr: {
+				  D: [" JOUR", " JOURS"],
+				  H: [" HEURE", " HEURES"],
+				  M: [" MINUTE", " MINUTES"],
+			      S: [" SECONDE", " SECONDES"],
+				  plural: function(nr) {
+          			return (nr == 1) ? 0 : 1;
+        		  }
+				},
+				it: {
+				  D: [" GIORNO", " GIORNI"],
+				  H: [" ORA", " ORE"],
+				  M: [" MINUTO", " MINUTI"],
+			      S: [" SECONDO", " SECONDI"],
+				  plural: function(nr) {
+          			return (nr == 1) ? 0 : 1;
+        		  }
+				},
+				de: {
+				  D: [" TAG", " TAGE"],
+				  H: [" STUNDE", " STUNDEN"],
+				  M: [" MINUTE", " MINUTEN"],
+			      S: [" SEKUNDE", " SEKUNDEN"],
+				  plural: function(nr) {
+          			return (nr == 1) ? 0 : 1;
+        		  }
+				},
+				ja: {
+				  D: ["日"],
+				  H: ["時間"],
+				  M: ["分"],
+			      S: ["秒"],
+				  plural: function(nr) {
+          			return 0;
+        		  }
+				},
+				zhHans: {
+				  D: ["天"],
+				  H: ["小时"],
+				  M: ["分钟"],
+			      S: ["秒钟"],
+				  plural: function(nr) {
+          			return 0;
+        		  }
+				},
+				zhHant: {
+				  D: ["天"],
+				  H: ["小時"],
+				  M: ["分鐘"],
+			      S: ["秒"],
+				  plural: function(nr) {
+          			return 0;
+        		  }
+				}
+			  }
+			};
+			
 			$(document).ready(function() {
 				$('.ce-countdown').countEverest({
 					// Set your target date here!
@@ -112,6 +190,14 @@
 					hour: queryParams["hour"],
 					minute: queryParams["minute"],
 					second: queryParams["second"],
+					daysLabel: Localization.translate("D",2),
+					dayLabel: Localization.translate("D",1),
+					hoursLabel: Localization.translate("H",2),
+					hourLabel: Localization.translate("H",1),
+					minutesLabel: Localization.translate("M",2),
+					minuteLabel: Localization.translate("M",1),
+					secondsLabel: Localization.translate("S",2),
+					secondLabel: Localization.translate("S",1),
 					timeZone: timezoneOffset,
 					afterCalculation: function() {
 						if (this.days > 0) {
