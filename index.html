@@ -25,7 +25,6 @@
 		<!-- Load Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,600&amp;subset=latin-ext" rel="stylesheet">
 
-		<!-- DEMO styles to center countdown vertically and horizontally -->
 		<style type="text/css">
 			html {
 				display: table;
@@ -120,6 +119,7 @@
 				  H: [" HOUR", " HOURS"],
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECOND", " SECONDS"],
+				  IN: ["IN"],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -129,6 +129,7 @@
 				  H: [" HEURE", " HEURES"],
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECONDE", " SECONDES"],
+				  IN: ["DANS"],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -138,6 +139,7 @@
 				  H: [" ORA", " ORE"],
 				  M: [" MINUTO", " MINUTI"],
 			      S: [" SECONDO", " SECONDI"],
+				  IN: ["TRA"],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -147,6 +149,7 @@
 				  H: [" STUNDE", " STUNDEN"],
 				  M: [" MINUTE", " MINUTEN"],
 			      S: [" SEKUNDE", " SEKUNDEN"],
+				  IN: ["IN"],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -156,6 +159,7 @@
 				  H: ["時間"],
 				  M: ["分"],
 			      S: ["秒"],
+				  IN: ["あと"],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -165,6 +169,7 @@
 				  H: ["小时"],
 				  M: ["分钟"],
 			      S: ["秒钟"],
+				  IN: ["于"],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -174,6 +179,7 @@
 				  H: ["小時"],
 				  M: ["分鐘"],
 			      S: ["秒"],
+				  IN: ["還有"],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -240,6 +246,8 @@
 			
 			var title = queryParams["title"];
 			if (title) {
+				document.getElementById('tp-countdown-in').innerHTML = Localization.translate("IN",1);
+				
 				var decodedTitle = decodeURIComponent(title);
 				document.getElementById('tp-countdown-event-title').innerHTML = decodedTitle;
 				document.title = decodedTitle + " via Timepage";
