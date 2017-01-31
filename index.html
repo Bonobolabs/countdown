@@ -95,13 +95,11 @@
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/vendor/jquery.counteverest.min.js"></script>
 
-		<!-- Init Count Everest plugin -->
+		<!-- Init Countdown -->
 		<script>
 			var queryParams = getUrlVars();
 			
-			var timezoneOffset = queryParams["timezoneOffset"];
-			if (!timezoneOffset) timezoneOffset = 0; // UTC if nothing specified.
-			
+			var timezoneOffset = queryParams["timezoneOffset"] || 0; // UTC if nothing specified.
 			var locale = queryParams["lc"] || "en";
 			
 			var Localization = {
@@ -120,6 +118,7 @@
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECOND", " SECONDS"],
 				  IN: ["IN"],
+				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -130,6 +129,7 @@
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECONDE", " SECONDES"],
 				  IN: ["DANS"],
+				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -140,6 +140,7 @@
 				  M: [" MINUTO", " MINUTI"],
 			      S: [" SECONDO", " SECONDI"],
 				  IN: ["TRA"],
+				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -150,6 +151,7 @@
 				  M: [" MINUTE", " MINUTEN"],
 			      S: [" SEKUNDE", " SEKUNDEN"],
 				  IN: ["IN"],
+				  DOWNLOAD: ["Timepage herunterladen, um auf Ihrem iPhone oder iPad einen Countdown zu erstellen."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
         		  }
@@ -160,6 +162,7 @@
 				  M: ["分"],
 			      S: ["秒"],
 				  IN: ["あと"],
+				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -170,6 +173,7 @@
 				  M: ["分钟"],
 			      S: ["秒钟"],
 				  IN: ["于"],
+				  DOWNLOAD: ["下载Timepage，给您的iPhone或iPad创建倒计时。"],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -180,6 +184,7 @@
 				  M: ["分鐘"],
 			      S: ["秒"],
 				  IN: ["還有"],
+				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return 0;
         		  }
@@ -247,6 +252,7 @@
 			var title = queryParams["title"];
 			if (title) {
 				document.getElementById('tp-countdown-in').innerHTML = Localization.translate("IN",1);
+				document.getElementById('tp-download-text').innerHTML = Localization.translate("DOWNLOAD",1);
 				
 				var decodedTitle = decodeURIComponent(title);
 				document.getElementById('tp-countdown-event-title').innerHTML = decodedTitle;
