@@ -16,7 +16,7 @@
 	display: block;
 }
 
-#tp-countdown-in {
+#tp-countdown-in, #tp-countdown-ago {
 	padding-top: 2vmin;
 	font-size: 2vmin;
 	font-weight: 200;
@@ -30,6 +30,7 @@
 }
 
 /* TODO: Font for Non-Mac/iOS viewers without Avenir Next */
+#main,
 .timepage-theme,
 #tp-countdown-in,
 #tp-countdown-event-title,

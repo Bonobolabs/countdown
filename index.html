@@ -77,7 +77,7 @@
 				<img id="tp-countdown-icon" src="">
 				<div>    
 					<div id="tp-countdown-event-title"></div>
-					<div id="tp-countdown-in">IN</div>
+					<div id="tp-countdown-in" class="tp-countdown-classify">IN</div>
 				</div>
 				<div class="ce-countdown timepage-theme" id="countdown">
 					<span id="tp-countdown-top-line">
@@ -88,6 +88,9 @@
 						<span id="minutesWrapper"><span class="ce-minutes"></span> <span class="ce-minutes-label"></span></span>
 						<span id="secondsWrapper"><span class="ce-seconds"></span> <span class="ce-seconds-label"></span></span>
 					</span>
+				</div>
+				<div id="ago-wrapper">
+					<div id="tp-countdown-ago" class="tp-countdown-classify">AGO</div>
 				</div>
 			</div>
 			<div id="footer">
@@ -103,7 +106,7 @@
 
 		<!-- Load all necessary JavaScript files -->
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-		<script src="js/vendor/jquery.counteverest.min.js"></script>
+		<script src="js/vendor/jquery.counteverest.js"></script>
 
 		<!-- Init Countdown -->
 		<script>
@@ -128,6 +131,7 @@
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECOND", " SECONDS"],
 				  IN: ["IN"],
+				  AGO: ["AGO"],
 				  DOWNLOAD: ["Download Timepage to create a countdown on your iPhone or iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
@@ -139,6 +143,7 @@
 				  M: [" MINUTE", " MINUTES"],
 			      S: [" SECONDE", " SECONDES"],
 				  IN: ["DANS"],
+				  AGO: ["DEPUIS"],
 				  DOWNLOAD: ["Téléchargez Timepage pour créer un compte à rebours sur votre iPhone ou votre iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
@@ -150,6 +155,7 @@
 				  M: [" MINUTO", " MINUTI"],
 			      S: [" SECONDO", " SECONDI"],
 				  IN: ["TRA"],
+				  AGO: ["FA"],
 				  DOWNLOAD: ["Scarica Timepage per crare un conto alla rovescia sul tuo iPhone o iPad."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
@@ -161,6 +167,7 @@
 				  M: [" MINUTE", " MINUTEN"],
 			      S: [" SEKUNDE", " SEKUNDEN"],
 				  IN: ["IN"],
+				  AGO: ["VOR"],
 				  DOWNLOAD: ["Timepage herunterladen, um auf Ihrem iPhone oder iPad einen Countdown zu erstellen."],
 				  plural: function(nr) {
           			return (nr == 1) ? 0 : 1;
@@ -172,6 +179,7 @@
 				  M: ["分"],
 			      S: ["秒"],
 				  IN: ["あと"],
+				  AGO: ["前"],
 				  DOWNLOAD: ["Timepageをダウンロードして、iPhoneまたはiPadでカウントダウンを作成します。"],
 				  plural: function(nr) {
           			return 0;
@@ -183,6 +191,7 @@
 				  M: ["分钟"],
 			      S: ["秒钟"],
 				  IN: ["于"],
+				  AGO: ["前"],
 				  DOWNLOAD: ["下载Timepage，给您的iPhone或iPad创建倒计时。"],
 				  plural: function(nr) {
           			return 0;
@@ -194,6 +203,7 @@
 				  M: ["分鐘"],
 			      S: ["秒"],
 				  IN: ["還有"],
+				  AGO: ["前"],
 				  DOWNLOAD: ["下載 Timepage，在您的 iPhone 或 iPad 倒數計時。"],
 				  plural: function(nr) {
           			return 0;
@@ -201,6 +211,12 @@
 				}
 			  }
 			};
+			
+			var daysWrapper = $('#daysWrapper');
+			var hoursWrapper = $('#hoursWrapper');
+			var minutesWrapper = $('#minutesWrapper');
+			var agoLabel = $('#tp-countdown-ago');
+			var inLabel = $('#tp-countdown-in');
 			
 			$(document).ready(function() {
 				$('.ce-countdown').countEverest({
@@ -220,29 +236,46 @@
 					secondsLabel: Localization.translate("S",2),
 					secondLabel: Localization.translate("S",1),
 					timeZone: timezoneOffset,
-					afterCalculation: function() {
-						if (this.days > 0) {
+					countUp: true,
+					onChange: function() {
+						console.log("Days: " + this.days + " Hours: " + this.hours + " Minutes: " + this.minutes + " Seconds: " + this.seconds);
+						if (Math.abs(this.days) > 0) {
 							//console.log("Days" + this.days);
 							$('#daysWrapper').appendTo('#tp-countdown-top-line');
+							hoursWrapper.appendTo('#tp-countdown-bottom-line');
+							minutesWrapper.appendTo('#tp-countdown-bottom-line');
 						} else {
-							$('#daysWrapper').detach();
+							daysWrapper.detach();
 
-							if (this.hours > 0) {
+							if (Math.abs(this.hours) > 0) {
 								//console.log("Hours" + this.hours);
-								$('#hoursWrapper').appendTo('#tp-countdown-top-line');
+								hoursWrapper.appendTo('#tp-countdown-top-line');
+								minutesWrapper.appendTo('#tp-countdown-bottom-line');
 							} else {
-								$('#hoursWrapper').detach();
+								hoursWrapper.detach();
 
-								if (this.minutes > 0) {
+								if (Math.abs(this.minutes) > 0) {
 									//console.log("Minutes" + this.minutes);
-									$('#minutesWrapper').appendTo('#tp-countdown-top-line');
+									minutesWrapper.appendTo('#tp-countdown-top-line');
+									$('#secondsWrapper').appendTo('#tp-countdown-bottom-line');
 								} else {
 									//console.log("Seconds" + this.seconds);
-									$('#minutesWrapper').detach();
+									minutesWrapper.detach();
 									$('#secondsWrapper').appendTo('#tp-countdown-top-line');
 								}
 							}
 						}
+						
+						var target = new Date(Date.UTC(this.settings.year, this.settings.month - 1, this.settings.day, this.settings.hour, this.settings.minute, this.settings.second));
+						if (target > this.currentDate) {
+							agoLabel.detach();
+						} else {
+							agoLabel.appendTo('#ago-wrapper');
+							inLabel.detach();
+						}
+					},
+					onComplete: function() {
+//						location.reload();
 					}
 				});
 			});
@@ -258,6 +291,8 @@
 			} else {
 				$('#tp-countdown-icon').detach();
 			}
+			
+			document.getElementById('tp-countdown-ago').innerHTML = Localization.translate("AGO",1);
 			
 			var title = queryParams["title"];
 			if (title) {

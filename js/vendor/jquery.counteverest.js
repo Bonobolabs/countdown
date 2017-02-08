@@ -1,10 +1,13 @@
 /*!
  * CountEverest - jQuery Plugin
- * @version   2.1.1
+ * @version   tp_2.2.0
  * @requires  jQuery v1.6 or later
  * @author    Patrick Baber <support@anacoda.de>
  * @see       http://counteverest.anacoda.de
+ * 
+ * Modified by @siburb to count down and then up once the time has elapsed without displaying negative numbers.
  */
+
 ;
 (function ($, window, document, undefined) {
 	'use strict';
@@ -445,12 +448,12 @@
 				m = t.naturalNum(m);
 				ds = t.naturalNum(ds);
 			} else {
-				d = d * (-1);
-				h = h * (-1);
-				i = i * (-1);
-				se = se * (-1);
-				m = m  * (-1);
-				ds = ds * (-1);
+				d = Math.abs(d * (-1));
+				h =  Math.abs(h * (-1));
+				i =  Math.abs(i * (-1));
+				se =  Math.abs(se * (-1));
+				m =  Math.abs(m  * (-1));
+				ds =  Math.abs(ds * (-1));
 			}
 
 			//save values
@@ -614,8 +617,16 @@
 			}
 		},
 		round: function(i) {
+			// Have to recreate target date because of UTC issue.
+			var target =  new Date(Date.UTC(this.settings.year, this.settings.month - 1, this.settings.day, this.settings.hour, this.settings.minute, this.settings.second));
+//			console.log("Target: " + target + " Current: " + this.currentDate);
+			
 			//floor or ceil depending on counting down or up
-			return (this.settings.countUp == false) ? Math.floor(i) : Math.ceil(i);
+			if (target > this.currentDate) {
+				return Math.floor(i);
+			} else {
+				return Math.ceil(i);
+			}
 		},
 		naturalNum: function(i) {
 			return (i < 0) ? 0 : i;
