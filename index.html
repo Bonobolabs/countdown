@@ -215,6 +215,7 @@
 			var daysWrapper = $('#daysWrapper');
 			var hoursWrapper = $('#hoursWrapper');
 			var minutesWrapper = $('#minutesWrapper');
+			var secondsWrapper = $('#secondsWrapper');
 			var agoLabel = $('#tp-countdown-ago');
 			var inLabel = $('#tp-countdown-in');
 			
@@ -243,7 +244,10 @@
 							//console.log("Days" + this.days);
 							$('#daysWrapper').appendTo('#tp-countdown-top-line');
 							hoursWrapper.appendTo('#tp-countdown-bottom-line');
+							hoursWrapper.append(" ");
 							minutesWrapper.appendTo('#tp-countdown-bottom-line');
+							minutesWrapper.append(" ");
+							secondsWrapper.appendTo('#tp-countdown-bottom-line');
 						} else {
 							daysWrapper.detach();
 
@@ -251,17 +255,19 @@
 								//console.log("Hours" + this.hours);
 								hoursWrapper.appendTo('#tp-countdown-top-line');
 								minutesWrapper.appendTo('#tp-countdown-bottom-line');
+								minutesWrapper.append(" ");
+								secondsWrapper.appendTo('#tp-countdown-bottom-line');
 							} else {
 								hoursWrapper.detach();
 
 								if (Math.abs(this.minutes) > 0) {
 									//console.log("Minutes" + this.minutes);
 									minutesWrapper.appendTo('#tp-countdown-top-line');
-									$('#secondsWrapper').appendTo('#tp-countdown-bottom-line');
+									secondsWrapper.appendTo('#tp-countdown-bottom-line');
 								} else {
 									//console.log("Seconds" + this.seconds);
 									minutesWrapper.detach();
-									$('#secondsWrapper').appendTo('#tp-countdown-top-line');
+									secondsWrapper.appendTo('#tp-countdown-top-line');
 								}
 							}
 						}
