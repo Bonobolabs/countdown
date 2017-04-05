@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="og:title" content="Timepage Countdown"/>
         <meta property="og:image" content="images/timepage.png"/>
-		
+
 		<!-- Favicon -->
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
@@ -14,11 +14,11 @@
 		<link rel="manifest" href="/manifest.json">
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 		<meta name="theme-color" content="#ffffff">
-		
+
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		
+
 		<title>Timepage Countdown</title>
-		
+
 		<!-- Load stylesheet -->
 		<link rel="stylesheet" href="css/counteverest.css">
 
@@ -45,7 +45,7 @@
 				text-align: center;
 			}
 		</style>
-		
+
 		<script>
 			function getUrlVars()
 			{
@@ -60,7 +60,7 @@
 				return vars;
 			}
     	</script>
-		
+
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -70,12 +70,29 @@
 			ga('create', 'UA-10230582-4', 'auto');
 			ga('send', 'pageview');
 		</script>
+
+		<!-- Facebook Pixel Code -->
+		<script>
+			!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+			n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+			document,'script','https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '810494485773404'); // Insert your pixel ID here.
+			fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=810494485773404&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- DO NOT MODIFY -->
+		<!-- End Facebook Pixel Code -->
+
 	</head>
 	<body>
 		<div id="full">
 			<div id="main">
 				<img id="tp-countdown-icon" src="">
-				<div>    
+				<div>
 					<div id="tp-countdown-event-title"></div>
 					<div id="tp-countdown-in" class="tp-countdown-classify">IN</div>
 				</div>
@@ -111,10 +128,10 @@
 		<!-- Init Countdown -->
 		<script>
 			var queryParams = getUrlVars();
-			
+
 			var timezoneOffset = queryParams["timezoneOffset"] || 0; // UTC if nothing specified.
 			var locale = queryParams["lc"] || "en";
-			
+
 			var Localization = {
 			  translate: function(lcKey, value) {
 				var loc = this.locales[this.currentLocale];
@@ -211,14 +228,14 @@
 				}
 			  }
 			};
-			
+
 			var daysWrapper = $('#daysWrapper');
 			var hoursWrapper = $('#hoursWrapper');
 			var minutesWrapper = $('#minutesWrapper');
 			var secondsWrapper = $('#secondsWrapper');
 			var agoLabel = $('#tp-countdown-ago');
 			var inLabel = $('#tp-countdown-in');
-			
+
 			$(document).ready(function() {
 				$('.ce-countdown').countEverest({
 					// Set your target date here!
@@ -271,7 +288,7 @@
 								}
 							}
 						}
-						
+
 						var target = new Date(Date.UTC(this.settings.year, this.settings.month - 1, this.settings.day, this.settings.hour, this.settings.minute, this.settings.second));
 						if (target > this.currentDate) {
 							agoLabel.detach();
@@ -285,11 +302,11 @@
 					}
 				});
 			});
-			
+
 			var backgroundColor = queryParams["color"];
 			if (!backgroundColor) backgroundColor = "#1d2424";
 			document.body.style.background = backgroundColor;
-			
+
 			var icon = queryParams["icon"];
 			if (icon) {
 				var iconName = "./images/" + decodeURIComponent(icon) + ".png";
@@ -297,14 +314,14 @@
 			} else {
 				$('#tp-countdown-icon').detach();
 			}
-			
+
 			document.getElementById('tp-countdown-ago').innerHTML = Localization.translate("AGO",1);
-			
+
 			var title = queryParams["title"];
 			if (title) {
 				document.getElementById('tp-countdown-in').innerHTML = Localization.translate("IN",1);
 				document.getElementById('tp-download-text').innerHTML = Localization.translate("DOWNLOAD",1);
-				
+
 				var decodedTitle = decodeURIComponent(title);
 				document.getElementById('tp-countdown-event-title').innerHTML = decodedTitle;
 				document.title = decodedTitle + " via Timepage";
